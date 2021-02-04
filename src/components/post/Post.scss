@@ -1,0 +1,24 @@
+@import "../../styles/variables";
+
+.post {
+	max-width: 40rem;
+	background-color: $color-white;
+
+	&__avatar {
+		margin-right: 1rem;
+	}
+
+	&__header {
+		display: flex;
+		align-items: center;
+		padding: 2rem 1rem;
+	}
+
+	&__image {
+		object-fit: contain;
+	}
+
+	&__text {
+		padding: 2rem;
+	}
+}

@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,KAAK,CAAC;EACL,SAAS,EAAE,KAAK;EAChB,gBAAgB,ECFH,kCAAkC;CDqB/C;;AAjBC,AAAD,aAAS,CAAC;EACT,YAAY,EAAE,IAAI;CAClB;;AAEA,AAAD,aAAS,CAAC;EACT,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;EACnB,OAAO,EAAE,SAAS;CAClB;;AAEA,AAAD,YAAQ,CAAC;EACR,UAAU,EAAE,OAAO;CACnB;;AAEA,AAAD,WAAO,CAAC;EACP,OAAO,EAAE,IAAI;CACb",
+    "sources": [
+        "Post.scss",
+        "../../styles/_variables.scss"
+    ],
+    "names": [],
+    "file": "Post.css"
+}
