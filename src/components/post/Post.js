@@ -6,7 +6,7 @@ import Avatar from "@material-ui/core/Avatar";
 // styles
 import "./Post.css";
 
-const Post = () => {
+const Post = ({ username, caption, imageURL }) => {
 	return (
 		<div className="post">
 			<div className="post__header">
@@ -15,17 +15,17 @@ const Post = () => {
 					alt="username"
 					src="/statis/images/avatar/1.jpg"
 				/>
-				<h3>Username</h3>
+				<h3>{username}</h3>
 			</div>
 
 			<img
 				className="post__image"
-				src="https://i.ytimg.com/vi/iosNuIdQoy8/maxresdefault.jpg"
-				alt="firebaseLogo"
+				src={imageURL}
+				alt="userFoto"
 			/>
 			<h4 className="post__text">
-				<strong>Argens: </strong>am making an instagram
-				clone!
+				<strong>{username}: </strong>
+				{caption}
 			</h4>
 		</div>
 	);
