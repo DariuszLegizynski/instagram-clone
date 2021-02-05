@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ReactReduxFirebaseProvider } from "react-redux-firebase";
-import rrfProps from "./config/firebase";
+import { rrfProps } from "./config/firebase";
 
 // components
 import App from "./components/app/App";

@@ -26,9 +26,9 @@ const rrfProps = {
 	// createFirestoreInstance
 };
 
-// const db = fbConfig.firestore();
-// const auth = firebase.auth();
+const db = fbConfig.firestore();
+const auth = firebase.auth();
 // const storage = firebase.storage();
 
-export default rrfProps;
+export { rrfProps, auth, db };
 // export { fbConfig, db, auth, storage };
