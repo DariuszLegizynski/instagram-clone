@@ -1,32 +1,29 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 // components
 import Post from "../post/Post";
 
 // tools
-import { uuid } from "uuidv4";
+import { v4 } from "uuid";
+
+// config
 import { db } from "../../config/firebase";
 
+// actions
+import { postsAction } from "../../store/posts/postsAction";
+
 const PostList = () => {
-	const [posts, setPosts] = useState([
-		// {
-		// 	username: "DariuszLegizynski",
-		// 	caption: "hello master",
-		// 	imageURL:
-		// 		"https://i.ytimg.com/vi/iosNuIdQoy8/maxresdefault.jpg",
-		// },
-		// {
-		// 	username: "Master",
-		// 	caption: "good work",
-		// 	imageURL:
-		// 		"https://frontendjournal.com/wp-content/uploads/2020/09/Javascript-ES6.jpg",
-		// },
-		// {
-		// 	username: "DariuszLegizynski",
-		// 	caption: "I am doing an instagram-clone",
-		// 	imageURL: "https://reactjs.org/logo-og.png",
-		// },
-	]);
+	const dispatch = useDispatch();
+	const selectPosts = useSelector((state) => state);
+
+	useEffect(() => {
+		dispatch(postsAction);
+	}, [dispatch]);
+
+	console.log(selectPosts);
+
+	const [posts, setPosts] = useState([]);
 
 	useEffect(() => {
 		db.collection("posts").onSnapshot((snapshot) => {
@@ -37,7 +34,7 @@ const PostList = () => {
 	return posts.map((el) => {
 		return (
 			<Post
-				id={uuid()}
+				id={v4()}
 				username={el.username}
 				caption={el.caption}
 				imageURL={el.imageUrl}

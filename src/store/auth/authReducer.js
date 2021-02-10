@@ -7,7 +7,7 @@ import {
 	GET_SIGNOUT_ERROR,
 	GET_SIGNUP_SUCCESS,
 	GET_SIGNUP_ERROR,
-} from "../index";
+} from "../actions/index";
 
 const DefaultState = {
 	authMsg: "",
