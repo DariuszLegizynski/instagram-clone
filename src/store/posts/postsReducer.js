@@ -4,11 +4,12 @@ import {
 } from "../actions/index";
 
 const DefaultState = {
-	posts: {},
+	posts: [],
 	errorMsg: "",
 };
 
 const postsReducer = (state = DefaultState, action) => {
+	console.log(action.type);
 	switch (action.type) {
 		case GET_POSTS_ERROR:
 			return {

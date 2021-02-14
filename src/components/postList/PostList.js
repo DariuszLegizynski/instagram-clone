@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 // components
@@ -8,39 +8,41 @@ import Post from "../post/Post";
 import { v4 } from "uuid";
 
 // config
-import { db } from "../../config/firebase";
+// import { db } from "../../config/firebase";
 
 // actions
 import { postsAction } from "../../store/posts/postsAction";
 
 const PostList = () => {
+	// const [posts, setPosts] = useState([]);
+
 	const dispatch = useDispatch();
-	const selectPosts = useSelector((state) => state);
 
 	useEffect(() => {
-		dispatch(postsAction);
+		dispatch(postsAction());
 	}, [dispatch]);
 
-	console.log(selectPosts);
+	const selectDbPosts = useSelector((state) => state);
 
-	const [posts, setPosts] = useState([]);
+	console.log(selectDbPosts);
 
-	useEffect(() => {
-		db.collection("posts").onSnapshot((snapshot) => {
-			setPosts(snapshot.docs.map((el) => el.data()));
-		});
-	}, []);
+	// useEffect(() => {
+	// 	db.collection("posts").onSnapshot((snapshot) => {
+	// 		setPosts(snapshot.docs.map((el) => el.data()));
+	// 	});
+	// }, []);
+	return <div>nothing</div>;
+	// return selectDbPosts.map((el) => {
+	// 	return (
 
-	return posts.map((el) => {
-		return (
-			<Post
-				id={v4()}
-				username={el.username}
-				caption={el.caption}
-				imageURL={el.imageUrl}
-			/>
-		);
-	});
+	// 		<Post
+	// 			id={v4()}
+	// 			username={el.username}
+	// 			caption={el.caption}
+	// 			imageURL={el.imageUrl}
+	// 		/>
+	// 	);
+	// });
 };
 
 export default PostList;

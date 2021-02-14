@@ -7,6 +7,7 @@ import { db } from "../../config/firebase";
 export const postsAction = () => async (dispatch) => {
 	db.collection("posts").onSnapshot((snapshot) => {
 		let posts = snapshot.docs.map((doc) => doc.data());
+		console.log(posts);
 		dispatch({
 			type: GET_POSTS_SUCCESS,
 			payload: posts,
