@@ -1,4 +1,7 @@
-import { GET_SIGNIN_ERROR, GET_SIGNIN_SUCCESS } from "../index";
+import {
+	GET_SIGNIN_ERROR,
+	GET_SIGNIN_SUCCESS,
+} from "../actions/index";
 import { auth } from "../../config/firebase";
 
 export const authActionSignIn = (credentials) => async (

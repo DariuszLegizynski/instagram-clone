@@ -1,27 +1,42 @@
-import React from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 // styles
 import "./Header.css";
 
 // actions
+import { authActionSignUp } from "../../store/auth/authActionSignUp";
+import { authActionSignIn } from "../../store/auth/authActionSignIn";
 import { authActionSignUpAnon } from "../../store/auth/authActionSignUpAnon";
 import { authActionSignOut } from "../../store/auth/authActionSignOut";
+
+// tools
 import ModalComponent from "../modal/ModalComponent";
 
 const Header = () => {
 	const dispatch = useDispatch();
 
-	const handleSignInAnon = () => {
-		dispatch(authActionSignUpAnon());
+	const [userSign, setUserSign] = useState({
+		email: "",
+		password: "",
+	});
+
+	const handleSignUp = (e) => {
+		e.preventDefault();
+		dispatch(authActionSignUp(userSign));
 	};
 
-	const signUp = (e) => {
-		e.prevent.default();
+	const handleChange = (e) => {
+		const { id, value } = e.target;
+		setUserSign({
+			...userSign,
+			[id]: value,
+		});
 	};
 
-	const signIn = (e) => {
-		e.prevent.default();
+	const handleSignIn = (e) => {
+		e.preventDefault();
+		dispatch(authActionSignIn(userSign));
 	};
 
 	return (
@@ -31,15 +46,21 @@ const Header = () => {
 				src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
 				alt="instagram__logo"
 			/>
-			{/* <ModalComponent
-				buttonText={"Guest Login"}
-				chooseAuth={handleSignInAnon}
-			/> */}
 			<button
 				onClick={() => dispatch(authActionSignUpAnon())}
 			>
 				Guest Login
 			</button>
+			<ModalComponent
+				buttonText={"Login"}
+				handleSign={handleSignIn}
+				handleChange={handleChange}
+			/>
+			<ModalComponent
+				buttonText={"Sign Up"}
+				handleSign={handleSignUp}
+				handleChange={handleChange}
+			/>
 			<button
 				onClick={() => dispatch(authActionSignOut())}
 			>
