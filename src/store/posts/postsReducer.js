@@ -9,7 +9,6 @@ const DefaultState = {
 };
 
 const postsReducer = (state = DefaultState, action) => {
-	console.log(action.type);
 	switch (action.type) {
 		case GET_POSTS_ERROR:
 			return {
@@ -19,7 +18,7 @@ const postsReducer = (state = DefaultState, action) => {
 		case GET_POSTS_SUCCESS:
 			return {
 				...state,
-				posts: action.payload,
+				posts: action.posts,
 				errorMsg: "",
 			};
 		default:

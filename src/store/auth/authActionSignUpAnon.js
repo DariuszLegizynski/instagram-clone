@@ -1,10 +1,10 @@
 import {
 	GET_SIGNIN_ANON_ERROR,
 	GET_SIGNIN_ANON_SUCCESS,
-} from "../index";
+} from "../actions/index";
 import { auth } from "../../config/firebase";
 
-export const getSignInAnon = () => async (dispatch) => {
+export const authActionSignUpAnon = () => async (dispatch) => {
 	try {
 		auth.signInAnonymously()
 			.then(() => {

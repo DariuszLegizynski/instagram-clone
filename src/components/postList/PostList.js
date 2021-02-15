@@ -6,43 +6,40 @@ import Post from "../post/Post";
 
 // tools
 import { v4 } from "uuid";
-
-// config
-// import { db } from "../../config/firebase";
+import _ from "lodash";
 
 // actions
 import { postsAction } from "../../store/posts/postsAction";
 
 const PostList = () => {
-	// const [posts, setPosts] = useState([]);
-
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(postsAction());
 	}, [dispatch]);
 
-	const selectDbPosts = useSelector((state) => state);
+	const selectDbPosts = useSelector(
+		(state) => state.postList.posts
+	);
 
-	console.log(selectDbPosts);
+	const showPosts = () => {
+		if (!_.isEmpty(selectDbPosts)) {
+			return selectDbPosts.map((el) => {
+				return (
+					<Post
+						key={v4()}
+						username={el.username}
+						caption={el.caption}
+						imageURL={el.imageUrl}
+					/>
+				);
+			});
+		} else {
+			return <p>loading</p>;
+		}
+	};
 
-	// useEffect(() => {
-	// 	db.collection("posts").onSnapshot((snapshot) => {
-	// 		setPosts(snapshot.docs.map((el) => el.data()));
-	// 	});
-	// }, []);
-	return <div>nothing</div>;
-	// return selectDbPosts.map((el) => {
-	// 	return (
-
-	// 		<Post
-	// 			id={v4()}
-	// 			username={el.username}
-	// 			caption={el.caption}
-	// 			imageURL={el.imageUrl}
-	// 		/>
-	// 	);
-	// });
+	return <>{showPosts()}</>;
 };
 
 export default PostList;
