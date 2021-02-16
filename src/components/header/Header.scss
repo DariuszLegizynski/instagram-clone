@@ -1,9 +1,14 @@
 @import "../../styles/variables";
 
 .header {
+	display: flex;
 	background-color: $color-white;
 	border-bottom: 1px solid $color-grey;
 	padding: 2rem;
+
+	&__auth {
+		display: flex;
+	}
 
 	&__image {
 		object-fit: contain;

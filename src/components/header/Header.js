@@ -46,26 +46,39 @@ const Header = () => {
 				src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
 				alt="instagram__logo"
 			/>
-			<button
-				onClick={() => dispatch(authActionSignUpAnon())}
-			>
-				Guest Login
-			</button>
-			<ModalComponent
-				buttonText={"Login"}
-				handleSign={handleSignIn}
-				handleChange={handleChange}
-			/>
-			<ModalComponent
-				buttonText={"Sign Up"}
-				handleSign={handleSignUp}
-				handleChange={handleChange}
-			/>
-			<button
-				onClick={() => dispatch(authActionSignOut())}
-			>
-				Log Out
-			</button>
+			<form className="header__form">
+				<input
+					className="header__form__search"
+					placeholder="search"
+				/>
+				<button className="header__form__search-btn">
+					Search-Icon
+				</button>
+			</form>
+			<div className="header__auth">
+				<button
+					onClick={() =>
+						dispatch(authActionSignUpAnon())
+					}
+				>
+					Guest Login
+				</button>
+				<ModalComponent
+					buttonText={"Login"}
+					handleSign={handleSignIn}
+					handleChange={handleChange}
+				/>
+				<ModalComponent
+					buttonText={"Sign Up"}
+					handleSign={handleSignUp}
+					handleChange={handleChange}
+				/>
+				<button
+					onClick={() => dispatch(authActionSignOut())}
+				>
+					Log Out
+				</button>
+			</div>
 		</section>
 	);
 };
