@@ -2,6 +2,7 @@
 
 .header {
 	display: flex;
+	justify-content: space-between;
 	background-color: $color-white;
 	border-bottom: 1px solid $color-grey;
 	padding: 2rem;

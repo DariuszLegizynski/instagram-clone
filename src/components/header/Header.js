@@ -51,12 +51,13 @@ const Header = () => {
 					className="header__form__search"
 					placeholder="search"
 				/>
-				<button className="header__form__search-btn">
+				<button className="header__form__search-btn btn">
 					Search-Icon
 				</button>
 			</form>
 			<div className="header__auth">
 				<button
+					className="btn"
 					onClick={() =>
 						dispatch(authActionSignUpAnon())
 					}
@@ -74,6 +75,7 @@ const Header = () => {
 					handleChange={handleChange}
 				/>
 				<button
+					className="btn"
 					onClick={() => dispatch(authActionSignOut())}
 				>
 					Log Out

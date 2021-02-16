@@ -1,8 +1,17 @@
 @import "./variables";
 @import "./typography";
 
-button {
+.btn {
 	border: none;
 	text-decoration: none;
+	background-color: $color-secondary;
+	color: $color-white;
+	border-radius: 4px;
+	border: 1px solid transparent;
+	padding: 5px 9px;
+	text-align: center;
+	width: auto;
+	font-size: $default-font-size-smaller;
+	font-weight: $default-font-weight-600;
 	cursor: pointer;
 }

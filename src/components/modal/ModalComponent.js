@@ -25,7 +25,10 @@ const ModalComponent = ({
 
 	return (
 		<div className="modal">
-			<button onClick={() => setModalIsOpen(true)}>
+			<button
+				className="btn"
+				onClick={() => setModalIsOpen(true)}
+			>
 				{buttonText}
 			</button>
 			<Modal
@@ -59,9 +62,12 @@ const ModalComponent = ({
 							required
 						/>
 					</div>
-					<button>{buttonText}</button>
+					<button className="btn">{buttonText}</button>
 				</form>
-				<button onClick={() => setModalIsOpen(false)}>
+				<button
+					className="btn"
+					onClick={() => setModalIsOpen(false)}
+				>
 					Close
 				</button>
 			</Modal>
