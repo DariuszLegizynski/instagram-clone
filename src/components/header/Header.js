@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // styles
 import "./Header.css";
@@ -15,6 +15,8 @@ import ModalComponent from "../modal/ModalComponent";
 
 const Header = () => {
 	const dispatch = useDispatch();
+
+	const authState = useSelector((state) => state.auth);
 
 	const [userSign, setUserSign] = useState({
 		email: "",
@@ -56,30 +58,39 @@ const Header = () => {
 				</button>
 			</form>
 			<div className="header__auth">
-				<button
-					className="btn"
-					onClick={() =>
-						dispatch(authActionSignUpAnon())
-					}
-				>
-					Guest Login
-				</button>
-				<ModalComponent
-					buttonText={"Login"}
-					handleSign={handleSignIn}
-					handleChange={handleChange}
-				/>
-				<ModalComponent
-					buttonText={"Sign Up"}
-					handleSign={handleSignUp}
-					handleChange={handleChange}
-				/>
-				<button
-					className="btn"
-					onClick={() => dispatch(authActionSignOut())}
-				>
-					Log Out
-				</button>
+				<p>{authState.authMsg}</p>
+				{!authState.authenticated && (
+					<>
+						<button
+							className="btn"
+							onClick={() =>
+								dispatch(authActionSignUpAnon())
+							}
+						>
+							Guest Login
+						</button>
+						<ModalComponent
+							buttonText={"Login"}
+							handleSign={handleSignIn}
+							handleChange={handleChange}
+						/>
+						<ModalComponent
+							buttonText={"Sign Up"}
+							handleSign={handleSignUp}
+							handleChange={handleChange}
+						/>
+					</>
+				)}
+				{authState.authenticated && (
+					<button
+						className="btn"
+						onClick={() =>
+							dispatch(authActionSignOut())
+						}
+					>
+						Log Out
+					</button>
+				)}
 			</div>
 		</section>
 	);
