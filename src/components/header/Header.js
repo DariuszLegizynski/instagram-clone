@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 // styles
 import "./Header.css";
+import sprites from "../../resources/icomoon/sprites.svg";
 
 // actions
 import { authActionSignUp } from "../../store/auth/authActionSignUp";
@@ -12,6 +13,7 @@ import { authActionSignOut } from "../../store/auth/authActionSignOut";
 
 // tools
 import ModalComponent from "../modal/ModalComponent";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 	const dispatch = useDispatch();
@@ -41,46 +43,104 @@ const Header = () => {
 		dispatch(authActionSignIn(userSign));
 	};
 
+	const authenticated = () => {
+		if (!authState.authenticated) {
+			return (
+				<>
+					<Link to={"/"}>
+						<img
+							className="header__image"
+							src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
+							alt="instagram__logo"
+						/>
+					</Link>
+					<button
+						className="btn"
+						onClick={() =>
+							dispatch(authActionSignUpAnon())
+						}
+					>
+						Guest
+					</button>
+					<ModalComponent
+						buttonText={"Login"}
+						handleSign={handleSignIn}
+						handleChange={handleChange}
+					/>
+					<ModalComponent
+						buttonText={"Sign Up"}
+						handleSign={handleSignUp}
+						handleChange={handleChange}
+					/>
+				</>
+			);
+		} else {
+			return (
+				<>
+					<div className="header__top">
+						<Link to={"/"}>
+							<use
+								href={sprites + "#icon-camera1"}
+							/>
+						</Link>
+						<Link to={"/"}>
+							<img
+								className="header__image"
+								src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
+								alt="instagram__logo"
+							/>
+						</Link>
+						<Link to={"/"}>
+							<use
+								href={sprites + "#icon-compass1"}
+							/>
+						</Link>
+					</div>
+					<div className="header__bottom">
+						<Link to={"/"}>
+							<use
+								href={
+									sprites +
+									"#icon-home-outline"
+								}
+							/>
+						</Link>
+						<Link to={"/"}>
+							<use
+								href={sprites + "#icon-search"}
+							/>
+						</Link>
+						<Link to={"/"}>
+							<use
+								href={
+									sprites +
+									"#icon-plus-square-o"
+								}
+							/>
+						</Link>
+						<Link to={"/"}>
+							<use
+								href={sprites + "#icon-heart-o"}
+							/>
+						</Link>
+						<Link to={"/"}>
+							<use
+								href={
+									sprites + "#icon-user-circle"
+								}
+							/>
+						</Link>
+					</div>
+				</>
+			);
+		}
+	};
+
 	return (
 		<section className="header">
-			<img
-				className="header__image"
-				src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
-				alt="instagram__logo"
-			/>
-			<form className="header__form">
-				<input
-					className="header__form__search"
-					placeholder="search"
-				/>
-				<button className="header__form__search-btn btn">
-					Search-Icon
-				</button>
-			</form>
+			{authenticated()}
 			<div className="header__auth">
 				<p>{authState.authMsg}</p>
-				{!authState.authenticated && (
-					<>
-						<button
-							className="btn"
-							onClick={() =>
-								dispatch(authActionSignUpAnon())
-							}
-						>
-							Guest Login
-						</button>
-						<ModalComponent
-							buttonText={"Login"}
-							handleSign={handleSignIn}
-							handleChange={handleChange}
-						/>
-						<ModalComponent
-							buttonText={"Sign Up"}
-							handleSign={handleSignUp}
-							handleChange={handleChange}
-						/>
-					</>
-				)}
 				{authState.authenticated && (
 					<button
 						className="btn"
