@@ -8,7 +8,6 @@ import sprites from "../../resources/icomoon/sprites.svg";
 // actions
 import { authActionSignUp } from "../../store/auth/authActionSignUp";
 import { authActionSignIn } from "../../store/auth/authActionSignIn";
-import { authActionSignUpAnon } from "../../store/auth/authActionSignUpAnon";
 import { authActionSignOut } from "../../store/auth/authActionSignOut";
 
 // tools
@@ -47,30 +46,17 @@ const Header = () => {
 		if (!authState.authenticated) {
 			return (
 				<>
-					<Link to={"/"}>
-						<img
-							className="header__image"
-							src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
-							alt="instagram__logo"
-						/>
-					</Link>
-					<button
-						className="btn"
-						onClick={() =>
-							dispatch(authActionSignUpAnon())
-						}
-					>
-						Guest
-					</button>
 					<ModalComponent
 						buttonText={"Login"}
 						handleSign={handleSignIn}
 						handleChange={handleChange}
+						btnStyle={"btn"}
 					/>
 					<ModalComponent
 						buttonText={"Sign Up"}
 						handleSign={handleSignUp}
 						handleChange={handleChange}
+						btnStyle={"btn--rev"}
 					/>
 				</>
 			);
@@ -81,13 +67,6 @@ const Header = () => {
 						<Link to={"/"}>
 							<use
 								href={sprites + "#icon-camera1"}
-							/>
-						</Link>
-						<Link to={"/"}>
-							<img
-								className="header__image"
-								src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
-								alt="instagram__logo"
 							/>
 						</Link>
 						<Link to={"/"}>
@@ -137,8 +116,15 @@ const Header = () => {
 	};
 
 	return (
-		<section className="header">
-			{authenticated()}
+		<nav className="header">
+			<Link to={"/"}>
+				<img
+					className="header__image"
+					src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
+					alt="instagram-logo"
+				/>
+			</Link>
+			<div className="header__auth">{authenticated()}</div>
 			<div className="header__auth">
 				<p>{authState.authMsg}</p>
 				{authState.authenticated && (
@@ -152,7 +138,7 @@ const Header = () => {
 					</button>
 				)}
 			</div>
-		</section>
+		</nav>
 	);
 };
 

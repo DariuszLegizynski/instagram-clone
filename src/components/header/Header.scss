@@ -2,11 +2,12 @@
 
 .header {
 	display: flex;
-	justify-content: space-between;
+	width: 100%;
+	flex-direction: column;
 	align-items: center;
 	background-color: $color-white;
 	border-bottom: 1px solid $color-grey;
-	padding: 2rem;
+	padding: 2rem 0.4rem;
 
 	&__auth {
 		display: flex;
@@ -18,7 +19,7 @@
 
 	&__image {
 		object-fit: contain;
-		max-height: 100%;
-		max-width: 100%;
+		height: auto;
+		margin: 0 1rem;
 	}
 }

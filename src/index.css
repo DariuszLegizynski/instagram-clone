@@ -8,7 +8,19 @@ button {
   color: rgba(var(--d87, 255, 255, 255), 1);
   border-radius: 4px;
   border: 1px solid transparent;
-  padding: 5px 9px;
+  padding: 0.4rem 0.8rem;
+  margin-right: 1rem;
+  text-align: center;
+  width: auto;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn--rev {
+  background-color: transparent;
+  color: #0095f6;
+  border-radius: none;
   margin-right: 1rem;
   text-align: center;
   width: auto;

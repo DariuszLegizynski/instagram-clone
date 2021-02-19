@@ -1,14 +1,24 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 // tools
 import Modal from "react-modal";
+
+// actions
+import { authActionSignUpAnon } from "../../store/auth/authActionSignUpAnon";
+
+// styles
+import "./ModalComponent.css";
 
 const ModalComponent = ({
 	buttonText,
 	handleSign,
 	handleChange,
+	btnStyle,
 }) => {
 	Modal.setAppElement("#root");
+
+	const dispatch = useDispatch();
 
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -23,10 +33,12 @@ const ModalComponent = ({
 		},
 	};
 
+	const myStyle = `btn ${btnStyle}`;
+
 	return (
 		<div className="modal">
 			<button
-				className="btn"
+				className={myStyle}
 				onClick={() => setModalIsOpen(true)}
 			>
 				{buttonText}
@@ -64,6 +76,14 @@ const ModalComponent = ({
 					</div>
 					<button className="btn">{buttonText}</button>
 				</form>
+				<button
+					className="btn"
+					onClick={() =>
+						dispatch(authActionSignUpAnon())
+					}
+				>
+					Guest Login
+				</button>
 				<button
 					className="btn"
 					onClick={() => setModalIsOpen(false)}

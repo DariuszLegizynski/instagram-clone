@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACE,AAAD,WAAM,CAAC;EACN,SAAS,EAAE,MAAM;CACjB",
+    "sources": [
+        "ModalComponent.scss"
+    ],
+    "names": [],
+    "file": "ModalComponent.css"
+}

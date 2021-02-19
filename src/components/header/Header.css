@@ -2,15 +2,17 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   background-color: rgba(var(--d87, 255, 255, 255), 1);
   border-bottom: 1px solid #dbdbdb;
-  padding: 2rem;
+  padding: 2rem 0.4rem;
 }
 
 .header__auth {
@@ -28,7 +30,7 @@
 .header__image {
   -o-object-fit: contain;
      object-fit: contain;
-  max-height: 100%;
-  max-width: 100%;
+  height: auto;
+  margin: 0 1rem;
 }
 /*# sourceMappingURL=Header.css.map */
